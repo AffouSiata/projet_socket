@@ -7,6 +7,7 @@ const io = new Server(server);
 const conn = require("./connection/data");
 const router = require("./route");
 const session = require('express-session');
+const sessionMiddleware = session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }});
 
 
 
@@ -17,32 +18,19 @@ conn.connect((error)=>{
     }
     else{
         console.log("connexion reussie");
-
+        
 
         const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
 
         const sessionMiddleware = session({
             secret: "changeit",
-            resave:true,
-            saveUninitialized:true
+            resave:false,
+            saveUninitialized:false
         });
        
 
 
         io.use(wrap(sessionMiddleware));
-
-        io.use((socket, next) => {
-        const session = socket.request.session;
-        console.log('masession',session);
-        if (session && session.authenticated) {
-            next();
-        } else {
-            next(new Error("unauthorized"));
-
-        }
-        });
-
-
 
         app.set('views','./views')   
         app.set('view engine','ejs') 
@@ -55,18 +43,34 @@ conn.connect((error)=>{
         app.use('/',router)
 
         
-       
+        io.use((socket, next) => {
+            sessionMiddleware(socket.request, {}, next);
+            
+        });
+
+        io.use((socket, next) => {
+            const session = socket.request.session;
+            console.log('masession',session);
+            if (session && session.authenticated) {
+                next();
+            } else {
+                next(new Error("unauthorized"));
+    
+            }
+        });
+
+
         
-        io.on('connection', (socket) => {
+        io.of('/index').on('connection', (socket) => {
             socket.broadcast.emit('hi');
             console.log('a user connected');
             console.log(" azerty",socket.request.session);
 
-            io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
+            io.of('/index').emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
             socket.on('chat message', (msg) => {
                 console.log(msg);
                 console.log("zertyui",socket.request.session);
-                io.emit('chat message', msg);
+                io.of('/index').emit('chat message', msg);
 
                 // let inserer = "INSERT INTO messages(texte)VALUES(?);";
                 // conn.query(inserer,[msg],(error,resultat)=>{
@@ -81,11 +85,9 @@ conn.connect((error)=>{
             });   
            
         });
-        io.use((socket, next) => {
-            sessionMiddleware(socket.request, {}, next);
-            
-        });
+        
         io.on('connection', (socket) => {
+
             const session = socket.request.session;
             session.connections++;
             session.save();

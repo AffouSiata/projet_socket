@@ -25,7 +25,7 @@
 
     <script src="/socket.io/socket.io.js"></script>
         <script>
-            var socket = io();
+            var socket = io("http://localhost:3000/index");
             var form = document.getElementById('form');
             var input = document.getElementById('input');
 
@@ -36,6 +36,7 @@
                 input.value = '';
                 }
         });
+      
 
         socket.on('chat message', function(msg) {
             var item = document.createElement('li');
@@ -44,11 +45,11 @@
             window.scrollTo(0, document.body.scrollHeight);
         });
         
-        socket.on('connect', function(){
+        // socket.on('connect', function(){
           
-            var sessionid = socket.io.engine.id;
+        //     var sessionid = socket.io.engine.id;
                     
-            });
+        //     });
 
 
         </script>

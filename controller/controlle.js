@@ -10,27 +10,57 @@ const control = class{
 
 
     
-    static affichageaccueil =(req=request,res=response)=>{
-        res.render('index')
+    static affichageacceuil =(req=request,res=response)=>{
+        if(req.session.utilisateur){
+            res.redirect('/index')
+        }
+        else{
+            res.render('page1')
+        }
+        
     }
     static affichageinscriptionget =(req=request,res=response)=>{
         res.render('inscription')
     }
-    static affichageconnexionget =(req=request,res=response)=>{
-        res.render('page1')
+
+
+
+    static affichagepage1get =(req=request,res=response)=>{
+        if(req.session.utilisateur){
+            res.render('index')
+        }
+        else{
+            res.render('page1')
+        }
+        
     }
 
 
 
-    static affichageconnexionpost =(req=request,res=response)=>{
-       quete.connexion(req.body);
-       res.redirect('/index')
+    static affichagepage1post =(req=request,res=response)=>{
+        
+       quete.connexion(req.body)
+       .then(success =>{
+            res.render('index')
+
+
+            let session ={
+                email:req.body.email
+            }
+            req.session.utilisateur = session
+            console.log("sssss",req.session);
+       })
+       .catch(error =>{
+           res.render('page1')
+           console.log("ERROR");
+       })
+ 
         
     }
     static affichageinscriptionpost=(req=request,res=response)=>{
        
-        quete.insertion(req.body);
-        res.redirect('/page1')
+         quete.insertion(req.body);
+        res.redirect('/')
 
 
     }

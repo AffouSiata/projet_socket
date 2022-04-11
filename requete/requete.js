@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const conn = require("../connection/data");
 const control = require("../controller/controlle");
 
@@ -20,16 +21,49 @@ const quete = class{
            })   
 
    }
+
+
+   
    static connexion =(data)=>{
+       return new Promise((resolve,reject)=>{
         let{email,password} =data
-        conn.query('SELECT * FROM users WHERE password=? and email=?',[password,email],(error,resultat)=>{
-            if(error){
-               console.log(error);
-                
+        console.log("ertyui",data);
+        conn.query('SELECT * FROM users WHERE email=?',[email],(error,resultat)=>{
+            console.log("rrrrrrrr",resultat);
+            
+            if(resultat == ""){
+
+                // res.render('page1')
+                console.log("email existe pas");
+                reject(error);
             }
             else{
-                console.log("azertyuyutre",resultat);
+                // res.redirect('/index')
+                console.log("email existe");
+                resolve(resultat)
             }
+
+       })
+
+
+
+
+
+
+        
+            // if(data.email == resultat.email && data.password == resultat.password){
+            //     res.redirect("/index")
+            // }
+            // else{
+            //     console.log("les idenfiants ne correspondent pas")
+            // }
+            // if(error){
+            //    console.log(error);
+                
+            // }
+            // else{
+            //     console.log("azertyuyutre",resultat);
+            // }
         })
    }
 }
