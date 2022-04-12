@@ -11,11 +11,13 @@ const control = class{
 
     
     static affichageacceuil =(req=request,res=response)=>{
-        if(req.session.utilisateur){
-            res.redirect('/index')
+       
+        // res.render('index')
+        if(req.session.membres){
+            res.render('index')  
         }
         else{
-            res.render('page1')
+            res.redirect('/')
         }
         
     }
@@ -26,37 +28,38 @@ const control = class{
 
 
     static affichagepage1get =(req=request,res=response)=>{
-        if(req.session.utilisateur){
-            res.render('index')
+        if(req.session.membres){
+            res.redirect('/index')  
         }
         else{
-            res.render('page1')
+            res.render('connexion')
         }
-        
+     
     }
 
+ession
 
 
     static affichagepage1post =(req=request,res=response)=>{
         
        quete.connexion(req.body)
        .then(success =>{
-            res.render('index')
+           console.log("ggggggg",success);
+            
+            let userid = success[0].ID
+            
+            req.session.membres = userid
+            console.log("sssss",req.session.membres);
 
-
-            let session ={
-                email:req.body.email
-            }
-            req.session.utilisateur = session
-            console.log("sssss",req.session);
+            res.redirect('/index')
        })
        .catch(error =>{
-           res.render('page1')
-           console.log("ERROR");
+           res.render('connexion')
+           console.log("ERROR",error);
        })
- 
         
     }
+
     static affichageinscriptionpost=(req=request,res=response)=>{
        
          quete.insertion(req.body);

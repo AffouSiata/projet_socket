@@ -8,7 +8,7 @@ const quete = class{
     static insertion = (data)=>{
         // console.log(req.body);
         let {nom, prenom, email, password} = data;
-        let inserer = "INSERT INTO users(nom,prenom,password,email)VALUES(?,?,?,?)";
+        let inserer = "INSERT INTO users(Nom,prenom,password,email)VALUES(?,?,?,?)";
             conn.query(inserer,[nom,prenom,password,email],(error,resultat)=>{
                if(error){
                     console.log(error)
@@ -26,8 +26,7 @@ const quete = class{
    
    static connexion =(data)=>{
        return new Promise((resolve,reject)=>{
-        let{email,password} =data
-        console.log("ertyui",data);
+        let{email} =data
         conn.query('SELECT * FROM users WHERE email=?',[email],(error,resultat)=>{
             console.log("rrrrrrrr",resultat);
             
