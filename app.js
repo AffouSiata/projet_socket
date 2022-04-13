@@ -54,92 +54,33 @@ io.of('/index').emit('some event', { someProperty: 'some value', otherProperty: 
 
     io.of('/index').on('connection', (socket) => {
         console.log('user connect');
-        
         console.log(" azerty",socket.request.session);
+
+
         socket.on('chat message',(msg)=>{
             console.log('message :'  + msg);
             socket.emit('chat message' , msg)
-            const mm = socket.request.session.membres
+            const mm = socket.request.session.toutsession
             console.log("eeeeee",mm);
+            console.log("socket.request.session total",socket.request.session);
+        
 
 
-        let inserer = "INSERT INTO messages (texte,usersid) VALUES(?, ?)";
-            conn.query(inserer,[msg, mm],(error,resultat)=>{
-              if(error){
-                  console.log("mon erreur",error)
-              }
-              else{
-                  console.log("bien enregistré",resultat);
-              }
-        })
+            let inserer = "INSERT INTO messages (texte,usersid) VALUES(?, ?)";
+            // conn.query(inserer,[msg, mm],(error,resultat)=>{
+            // if(error){
+            //       console.log("mon erreur",error)
+            //   }
+            //   else{
+            //       console.log("bien enregistré",resultat);
+            //   }
+            // })
 
         })
        
         
            
     });
-
-
-   
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    
-
-        // const fatou= io.of('/index')
-
-        // fatou.on('connection', (socket) => {
-        //     // socket.broadcast.emit('hi');
-        //     console.log('a user connected');
-        //     console.log(" azerty",socket.request.session);
-
-        //     socket.on('chat message', (msg) => {
-        //         console.log(msg);
-
-                   
-        //     });   
-
-        // });
-
-        //      io.of('/index').emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
-        //      io.of('/index').on('connection', (socket) => {
-        //         socket.on('chat message', (msg) => {
-        //         console.log(msg);
-        //         io.of('/index').emit('chat message',msg)
-                   
-        //     });   
-
-        //     const session = socket.request.session;
-           
-        // });
-        
-
-
-                // console.log("zertyui",socket.request.session);
-                // io.of('/index').emit('chat message', msg);
-
-                
-        
-        // io.on('connection', (socket) => {
-
-        //     const session = socket.request.session;
-        //     session.connections++;
-        //     session.save();
-        // });
-        
-          
-   
-
 
 
 server.listen(3000,()=>{

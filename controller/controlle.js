@@ -11,10 +11,15 @@ const control = class{
 
     
     static affichageacceuil =(req=request,res=response)=>{
-       
-        // res.render('index')
-        if(req.session.membres){
-            res.render('index')  
+        const ppp= req.session.membres;
+        if(ppp){
+           
+
+
+            conn.query('SELECT * FROM messages where usersid= ?',[ppp],(error,resultat)=>{
+                console.log("stockage",resultat);
+                res.render('index',{resultat:resultat})  
+            })
         }
         else{
             res.redirect('/')
@@ -45,11 +50,17 @@ ession
        quete.connexion(req.body)
        .then(success =>{
            console.log("ggggggg",success);
+
+
+           
+           let toutsession ={
+               ID:success[0].ID,
+               Nom:success[0].Nom
+           }
             
-            let userid = success[0].ID
-            
-            req.session.membres = userid
-            console.log("sssss",req.session.membres);
+            // let userid = success[0].ID
+            req.session.membres = toutsession
+            // console.log("sssss",req.session.membres);
 
             res.redirect('/index')
        })

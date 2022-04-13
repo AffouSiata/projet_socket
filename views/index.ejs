@@ -16,12 +16,19 @@
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <ul id="messages">
+      <% for (let i = 0; i < resultat.length; i++) {
+        const element = resultat[i]; %>
+
+        <li> <%= element.texte %></li>
+     <% }%>
+     
+    </ul>
     <form id="form" action="" method="post">
       <input id="input"  name="texte" autocomplete="off" /><button>Send</button>
     </form>
 
-
+    
 
     <script src="/socket.io/socket.io.js"></script>
         <script>
@@ -51,6 +58,9 @@
                     
         //     });
 
+
+
+       
 
         </script>
   </body>
