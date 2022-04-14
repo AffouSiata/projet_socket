@@ -38,8 +38,8 @@ const quete = class{
             }
             else{
                 // res.redirect('/index')
-                console.log("email existe");
-                resolve(resultat)
+                resolve(resultat[0])
+                
             }
 
        })

@@ -11,12 +11,11 @@ const control = class{
 
     
     static affichageacceuil =(req=request,res=response)=>{
-        const ppp= req.session.membres;
+        const ppp= req.session.membres
+        // console.log("dfdfdff",ppp.ID);
         if(ppp){
-           
-
-
-            conn.query('SELECT * FROM messages where usersid= ?',[ppp],(error,resultat)=>{
+        
+            conn.query('SELECT * FROM messages where usersid= ?',[ppp.ID],(error,resultat)=>{
                 console.log("stockage",resultat);
                 res.render('index',{resultat:resultat})  
             })
@@ -54,8 +53,8 @@ ession
 
            
            let toutsession ={
-               ID:success[0].ID,
-               Nom:success[0].Nom
+               ID:success.ID,
+               Nom:success.Nom
            }
             
             // let userid = success[0].ID

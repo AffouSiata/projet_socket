@@ -3,11 +3,16 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(server,{
+    cors:{
+        origin:["http://localhost:3000/index", "http://192.168.88.35:3000"],
+        credentials: true
+    }
+});
 const conn = require("./connection/data");
 const router = require("./route");
 const session = require('express-session');
-const { log } = require("console");
+
 
 
 
@@ -24,7 +29,7 @@ conn.connect((error)=>{
             secret: "keyboard cat",
             resave: false,
             saveUninitialized: true,
-            cookie:{maxAge:600000000}
+            cookie:{maxAge:600000}
         }));
 
 
@@ -50,31 +55,34 @@ conn.connect((error)=>{
     }
 
 })
-io.of('/index').emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
+ io.of('/index').emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
 
     io.of('/index').on('connection', (socket) => {
+
+         io.of('/index').emit('new users', {neusers:socket.request.session.membres})
         console.log('user connect');
         console.log(" azerty",socket.request.session);
-
-
+        
+    
         socket.on('chat message',(msg)=>{
             console.log('message :'  + msg);
             socket.emit('chat message' , msg)
-            const mm = socket.request.session.toutsession
+           
+            const mm = socket.request.session.membres.ID
             console.log("eeeeee",mm);
             console.log("socket.request.session total",socket.request.session);
         
 
 
             let inserer = "INSERT INTO messages (texte,usersid) VALUES(?, ?)";
-            // conn.query(inserer,[msg, mm],(error,resultat)=>{
-            // if(error){
-            //       console.log("mon erreur",error)
-            //   }
-            //   else{
-            //       console.log("bien enregistré",resultat);
-            //   }
-            // })
+            conn.query(inserer,[msg, mm],(error,resultat)=>{
+            if(error){
+                  console.log("mon erreur",error)
+              }
+              else{
+                  console.log("bien enregistré",resultat);
+              }
+            })
 
         })
        
