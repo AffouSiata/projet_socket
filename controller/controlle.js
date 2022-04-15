@@ -48,7 +48,7 @@ ession
         
        quete.connexion(req.body)
        .then(success =>{
-           console.log("ggggggg",success);
+        //    console.log("ggggggg",success);
 
 
            

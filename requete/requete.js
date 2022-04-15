@@ -28,7 +28,7 @@ const quete = class{
        return new Promise((resolve,reject)=>{
         let{email} =data
         conn.query('SELECT * FROM users WHERE email=?',[email],(error,resultat)=>{
-            console.log("rrrrrrrr",resultat);
+            // console.log("rrrrrrrr",resultat);
             
             if(resultat == ""){
 

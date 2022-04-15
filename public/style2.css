@@ -1,3 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
 /* body { 
     margin: 0; 
     padding-bottom: 3rem;
@@ -43,30 +49,37 @@
     background: #efefef;
 } */
 
+
+
+
+
+
+
 /* debut du front-end */
 
 .container{
     position: relative;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height:100vh;
     width: 50%;
     margin: auto;
     display: flex;
     flex-direction: row;
-    border-radius: 10px;
 }
 .block1{
-    border:  1px solid black; 
+    /* border:  1px solid black;  */
     height: 100%;
     width: 400px;
-    border-radius: 10px;
-    background-color: rgb(41, 172, 177); 
+    /* border-radius: 10px; */
+    background:#ada2e8;
 }
 .block2{
+    
     height: 100%;
-    width: 520px;
+    width: 400px;
     position:relative;
     flex: 1 1 160px;
+    
 }
 .recherche{
     height: 70px;
@@ -77,35 +90,64 @@
 }
 .utilisateur{
 
-    height: 70px;
-    width: 350px;
+    height: 90px;
     border-radius: 10px;
-    margin: 20px; 
+    margin: 20px;  
+    background:#7e6dd1 ;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
 
 }
+.utilisateur:hover{
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+    
+}
 .haut{
-    border:  1px solid black;
+    /* border:  1px solid black; */
     height: 90px;
     width:100%; 
-    background-color: rgb(156, 148, 148); 
+    background: #34debb;
+    display: flex;
+    flex-direction: row;
+    flex:1 1 auto;
+    position: relative;
 
  
 }
 .milieu{
+    overflow-y: scroll;
+    scrollbar-width: thin;
     width: 100%;
-    background-color: rgb(221, 212, 212); 
+    height: 850px;
+    background-color: #f6f2f2;
  
 }
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; 
+}
+#messages > li {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid black;
+}
+#messages > li:nth-child(odd) {
+    background: #efefef;
+} 
 .bas{
     position: absolute;
     bottom: 0;
     height: 70px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.15);
+    background:  rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
     
 }
 #form { 
     /* padding: 10px;  */
+    margin: 10px;
     height: 3rem;
     position: fixed; 
     display: flex;  
@@ -114,30 +156,89 @@
 }
 
  #input { 
-    border: none;
+    border: 2px solid gray;
     padding: 1 1rem; 
     flex-grow: 1; 
-    border-radius: 2rem;
+    border-radius: 1rem;
     margin: 0.25rem; 
     height: 40px;
     width: 500px;
+    /* outline-style: outset; */
+    font-size: 15px;
 }
      
 #input:focus { 
     outline: none;
  }
 #form > button { 
-    background: rgb(233, 12, 12);
+    background: #34debb;
     border: none; 
     padding: 0 1rem;
     margin: 0.25rem; 
     border-radius: 3px;
-    outline: none;
+    outline-style: outset;
     color: #fff;
-    width: 90px;
+    width: 75px;
     font-size: 20px;
     font-weight: bold;
      
+}
+.recherche{
+    border: 1px solid black; 
+    height: 80px;
+    width: 350px;
+   background-color: #34debb; 
+    position: relative;
 } 
+
+
+.nom{
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+.image{
+    height: 400px;
+    width: 400px;
+}
+.image img{
+    position: absolute;
+    height: 90px;
+    width: 100px;
+    left: 450px;
+}
+.recherche form{
+    position: absolute;
+}
+.recherche form input{
+    border: none;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 15px;
+    width: 250px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.recherche form i{
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgb(187, 191, 194);
+    color: #fff;
+}
+.utilisateur .userimage img{
+    height: 70px;
+    width:70px;
+    border-radius: 50%;
+    background-color: #34debb;
+}
+.utilisateur .usernom{
+    margin-top: 10px;
+    margin-left: 50px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
 

@@ -59,7 +59,8 @@ conn.connect((error)=>{
 
     io.of('/index').on('connection', (socket) => {
 
-         io.of('/index').emit('new users', {neusers:socket.request.session.membres})
+        console.log("rere",socket.request.session.membres);
+        io.of('/index').emit('new users', {neusers:socket.request.session.membres})
         console.log('user connect');
         console.log(" azerty",socket.request.session);
         
@@ -74,7 +75,7 @@ conn.connect((error)=>{
         
 
 
-            let inserer = "INSERT INTO messages (texte,usersid) VALUES(?, ?)";
+            let inserer = "INSERT INTO messages (texte,usersid) VALUES(?,?)";
             conn.query(inserer,[msg, mm],(error,resultat)=>{
             if(error){
                   console.log("mon erreur",error)

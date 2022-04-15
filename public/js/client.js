@@ -1,4 +1,4 @@
-var socket = io("http://localhost:3000/index",{
+var socket = io("http://192.168.88.35:3000/index",{
     withCredentials:true
   });
 
@@ -20,16 +20,30 @@ console.log("fhjkl",msg);
   var item = document.createElement('li');
   item.textContent = msg;
   messages.appendChild(item);
+  // let mesmessages =document.
   window.scrollTo(0, document.body.scrollHeight);
 });
 
-let toutUser =[]
+
+
 
 socket.on('new users',(data) =>{
-   console.log("vvvvvvv",data);
-  console.log("vvvvvvv",data.membres.Nom);
-  let contenu = document.createElement('div');
-  contenu.textContent = data.membres.Nom;
-  toutUser.appendChild(contenu);
+
+  console.log("vvvvvvv",data.neusers);
+  document.querySelector('.contentutilisateur').innerHTML +=`
+
+    <li class="utilisateur">
+    <div class="userimage">
+      <img src="../public/images/1.png" alt="">
+    </div>
+    <div class="usernom">
+      <p>${data.neusers.Nom}</p>
+    </div> 
+    </li>
+  `
+  // console.log("vvvvvvv",data.membres.Nom);
+  // let contenu = document.createElement('div');
+  // contenu.textContent = data.membres.Nom;
+  // toutUser.appendChild(contenu);
  
 })

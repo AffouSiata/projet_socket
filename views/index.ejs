@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../public/style2.css">
+    <script src="https://kit.fontawesome.com/6b4a8ac2d2.js" crossorigin="anonymous"></script>
     <title>Socket.IO chat</title>
   </head>
   <body>
@@ -24,27 +25,116 @@
 
   <div class="container">
       <div class="block1">
-          <div class="recherche"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          <div class="utilisateur"></div>
-          
+          <div class="recherche">
+            <form action="">
+              <input type="text">
+              <i class="fas fa-search"></i>
+            </form>
+          </div>
+
+          <ul class="contentutilisateur">
+            
+          </ul>
+
+          <!-- <div class="utilisateur">
+              <div class="userimage">
+                <img src="../public/images/1.png" alt="">
+              </div>
+              <div class="usernom">
+                 <p>User1</p>
+              </div>
+          </div>
+          <div class="utilisateur">
+            <div class="userimage">
+              <img src="../public/images/1.png" alt="">
+            </div>
+            <div class="usernom">
+               <p>User1</p>
+            </div>
+          </div>
+          <div class="utilisateur">
+            <div class="userimage">
+              <img src="../public/images/1.png" alt="">
+            </div>
+            <div class="usernom">
+               <p>User1</p>
+            </div>
+          </div> 
+           <div class="utilisateur">
+            <div class="userimage">
+              <img src="../public/images/1.png" alt="">
+            </div>
+            <div class="usernom">
+               <p>User1</p>
+            </div>
+          </div>
+          <div class="utilisateur">
+            <div class="userimage">
+              <img src="../public/images/1.png" alt="">
+            </div>
+            <div class="usernom">
+               <p>User1</p>
+            </div>
+          </div>
+          <div class="utilisateur">
+            <div class="userimage">
+              <img src="../public/images/1.png" alt="">
+            </div>
+            <div class="usernom">
+               <p>User1</p>
+            </div>
+          </div>
+          <div class="utilisateur">
+            <div class="userimage">
+              <img src="../public/images/1.png" alt="">
+            </div>
+            <div class="usernom">
+               <p>User1</p>
+            </div>
+          </div>
+    -->
       </div>
       <div class="block2">
-        <div class="haut"></div>
-        <div class="milieu"></div>
-        <div class="bas">
-          <form id="form" action="" method="post">
-            <input id="input"  name="texte" autocomplete="off" /><button>Send</button>
-          </form> 
+        <div class="haut">
+            <div class="nom">
+                <p>AFFOU SIATA</p>
+            </div>
+            <div class="image">
+              <img src="../public/images/1.png" alt="">
+            </div>
         </div>
+
+
+
+
+
+
+
+        <div class="milieu">
+          <ul id="messages">
+      
+            <% if (resultat) { %>
+              <% for (let i = 0; i < resultat.length; i++) {
+                const element = resultat[i]; %>
+        
+                <li> <%= element.texte %></li>
+               <% }%>
+            <% } %>  
+           
+          </ul>
+
+        </div>
+
+
+
+
+
+
+          <div class="bas">
+            <form id="form" action="" method="post">
+              <input id="input"  name="texte" autocomplete="off" placeholder="Entrer votre message" /><button>Send</button>
+            </form> 
+          </div>
       </div>
   </div> 
 
