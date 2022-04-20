@@ -120,10 +120,42 @@
     overflow-y: scroll;
     scrollbar-width: thin;
     width: 100%;
-    height: 850px;
+    height: 880px;
     background-color: #f6f2f2;
  
 }
+.conversation{
+    color:rgb(66, 62, 62);
+    background-color: white;
+    padding: 5px 15px;
+    max-width: 200px;
+    margin: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.conversation::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: red;
+}
+.milieu .conversation h5{
+    font-size: 25px;
+    color: black;
+}
+/* .milieu .conversation.outgoing{
+    margin-left: auto;
+    color:white;
+    background-color: #34debb;
+    border-radius:10px;
+    text-align: right;
+  
+} */
+
 #messages {
     list-style-type: none;
     margin: 0;
@@ -183,13 +215,6 @@
     font-weight: bold;
      
 }
-.recherche{
-    border: 1px solid black; 
-    height: 80px;
-    width: 350px;
-   background-color: #34debb; 
-    position: relative;
-} 
 
 
 .nom{
@@ -208,24 +233,46 @@
     width: 100px;
     left: 450px;
 }
-.recherche form{
-    position: absolute;
+
+
+
+
+.recherche{
+    position: relative;
+    width: 90%;
+    height: 70px;
+    background-color: #34debb;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
 }
-.recherche form input{
+.recherche div{
+    width: 100%;
+}
+.recherche div input{
+    width: 100%;
+    outline: none;
     border: none;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding: 15px;
-    width: 250px;
-    border-radius: 15px;
-    background-color: #fff;
+    background: #FFFF;
+    padding:  6px ;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 40px;
+    font-size: 20px;
 }
-.recherche form i{
-    padding: 10px;
-    border-radius: 50%;
-    background-color: rgb(187, 191, 194);
-    color: #fff;
+.recherche div input::placeholder{
+    color: #bbb
 }
+.recherche div i{
+    position: absolute;
+    left: 85%;
+    top: 25px;
+    font-size: 1.3em;
+    color: #bbb
+}
+
 .utilisateur .userimage img{
     height: 70px;
     width:70px;

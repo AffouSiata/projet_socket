@@ -37,7 +37,7 @@ socket.on('new users',(data) =>{
       <img src="../public/images/1.png" alt="">
     </div>
     <div class="usernom">
-      <p>${data.neusers.Nom}</p>
+      <p>${data.neusers.nom}</p>
     </div> 
     </li>
   `

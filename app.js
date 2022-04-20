@@ -69,7 +69,7 @@ conn.connect((error)=>{
             console.log('message :'  + msg);
             socket.emit('chat message' , msg)
            
-            const mm = socket.request.session.membres.ID
+            const mm = socket.request.session.membres.id
             console.log("eeeeee",mm);
             console.log("socket.request.session total",socket.request.session);
         

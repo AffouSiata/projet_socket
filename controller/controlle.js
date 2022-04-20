@@ -15,7 +15,7 @@ const control = class{
         // console.log("dfdfdff",ppp.ID);
         if(ppp){
         
-            conn.query('SELECT * FROM messages where usersid= ?',[ppp.ID],(error,resultat)=>{
+            conn.query('SELECT * FROM messages where usersid= ?',[ppp.id_user],(error,resultat)=>{
                 console.log("stockage",resultat);
                 res.render('index',{resultat:resultat})  
             })
@@ -53,8 +53,8 @@ ession
 
            
            let toutsession ={
-               ID:success.ID,
-               Nom:success.Nom
+                id_user:success.id_user,
+               nom:success.nom
            }
             
             // let userid = success[0].ID
