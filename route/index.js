@@ -6,8 +6,8 @@ const router =express.Router();
 
 
 
-router.get('/',control.affichagepage1get)
-router.post('/',control.affichagepage1post)
+router.get('/',control.affichageconnexionget)
+router.post('/',control.affichageconnexionpost)
 
 
 router.get('/inscription',control.affichageinscriptionget)

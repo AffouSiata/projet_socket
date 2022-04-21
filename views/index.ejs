@@ -6,24 +6,12 @@
     <title>Socket.IO chat</title>
   </head>
   <body>
-    <!-- <ul id="messages">
-
-      
-      <% if (resultat) { %>
-        <% for (let i = 0; i < resultat.length; i++) {
-          const element = resultat[i]; %>
-  
-          <li> <%= element.texte %></li>
-         <% }%>
-      <% } %>  
-     
-    </ul>
-    <form id="form" action="" method="post">
-      <input id="input"  name="texte" autocomplete="off" /><button>Send</button>
-    </form> -->
 
 
+    
   <div class="container">
+    
+   
       <div class="block1">
           <!-- <div class="recherche">
             <form action="">
@@ -42,24 +30,120 @@
           <ul class="contentutilisateur">
             
           </ul>
+         
+      </div>
+      
+      
+      <div class="block2">
+        <div class="haut">
+            <div class="nom">
+               
+            </div>
+            <div class="image">
+            <button><img src="../public/images/1.png" alt=""></button>
+            </div>
+        </div>
 
-           <div class="utilisateur">
-              <div class="userimage">
-                <img src="../public/images/1.png" alt="">
-              </div>
-              <div class="usernom">
-                 <p>User1</p>
-              </div>
+
+        <div class="milieu">
+          <div class="conversation">
+            <% if (resultat) { %>
+              <% for (let i = 0; i < resultat.length; i++) {
+                const element = resultat[i]; %>
+           <div class="mestexte">
+          
+              
+      
+              <p> <%= element.texte %></p>
+          
+           </div>
+           <% }%>
+           <% } %> 
+
+            
           </div>
-          <div class="utilisateur">
-            <div class="userimage">
-              <img src="../public/images/1.png" alt="">
-            </div>
-            <div class="usernom">
-               <p>User2</p>
-            </div>
+          
+      </div>
+         
+          
+         
+
+          <!-- <div class="conversation">
+            <h5>Affou</h5>
+            <p>salut ma grand</p>
           </div>
-          <!--
+          <div class="conversation outgoing">
+            <h5>Pen</h5>
+            <p>salut ma puce</p>
+          </div> -->
+          
+
+        </div>
+
+
+
+
+
+
+          <div class="bas">
+            <form id="form" action="" method="post">
+              <input id="input"  name="texte" autocomplete="off" placeholder="Entrer votre message" /><button>Send</button>
+            </form> 
+          </div>
+      </div>
+  </div> 
+
+
+
+  
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../public/js/client.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <ul id="messages">
+
+      
+      <% if (resultat) { %>
+        <% for (let i = 0; i < resultat.length; i++) {
+          const element = resultat[i]; %>
+  
+          <li> <%= element.texte %></li>
+         <% }%>
+      <% } %>  
+     
+    </ul>
+    <form id="form" action="" method="post">
+      <input id="input"  name="texte" autocomplete="off" /><button>Send</button>
+    </form> -->
+
+
+
+     <!--
           <div class="utilisateur">
             <div class="userimage">
               <img src="../public/images/1.png" alt="">
@@ -101,41 +185,10 @@
             </div>
           </div>
     -->
-      </div>
-      <div class="block2">
-        <div class="haut">
-            <div class="nom">
-                <p>AFFOU SIATA</p>
-            </div>
-            <div class="image">
-              <img src="../public/images/1.png" alt="">
-            </div>
-        </div>
 
 
 
-
-
-
-
-        <div class="milieu">
-          <!-- <ul id="messages">
-      
-            <% if (resultat) { %>
-              <% for (let i = 0; i < resultat.length; i++) {
-                const element = resultat[i]; %>
-        
-                <li> <%= element.texte %></li>
-               <% }%>
-            <% } %>  
-           
-          </ul> -->
-
-          <div class="conversation">
-            <h5>Affou</h5>
-            <p>salut ma grand</p>
-          </div>
-          <div class="conversation outgoing">
+    <!-- <div class="conversation outgoing">
             <h5>Pen</h5>
             <p>salut ma puce</p>
           </div>
@@ -147,26 +200,12 @@
           <div class="conversation outgoing">
             <h5>Pen</h5>
             <p>salut ma puce</p>
-          </div>
-
-        </div>
+          </div> -->
 
 
 
 
 
 
-          <div class="bas">
-            <form id="form" action="" method="post">
-              <input id="input"  name="texte" autocomplete="off" placeholder="Entrer votre message" /><button>Send</button>
-            </form> 
-          </div>
-      </div>
-  </div> 
 
-    
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="../public/js/client.js"></script>
-  </body>
-</html>
+         

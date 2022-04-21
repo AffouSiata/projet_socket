@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/modal.css">
+    <script src="https://kit.fontawesome.com/6b4a8ac2d2.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+      <div class="modal">
+        <div class="modalité">
+          <h2>Modifier le profil:</h2>
+          <button onclick="fermer()"><i class="fas fa-times"></i></button>
+        </div>
+        <hr>
+        
+        <form >
+          <div class="modal1">
+            <!-- <label for="nom">Nom</label><br> -->
+            <input type="text"  name ="nom" id="nom" placeholder="Entrez Votre nom">
+          </div>
+          <br>
+          <div class="modal2">
+            <input type="file" >
+          </div>
+          <button type="submit">Envoyer</button>
+        </form>
+        </div> 
+    <script>
+        function fermer (){
+          let pageferme = document.querySelector('.modal')
+          pageferme.style.display="none";
+      }
+    </script>
+</body>
+</html>

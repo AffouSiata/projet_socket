@@ -5,7 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server,{
     cors:{
-        origin:["http://localhost:3000/index", "http://192.168.88.35:3000"],
+        origin:["http://localhost:3000/index", "http://192.168.88.27:3000"],
         credentials: true
     }
 });
@@ -55,23 +55,26 @@ conn.connect((error)=>{
     }
 
 })
- io.of('/index').emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
 
-    io.of('/index').on('connection', (socket) => {
+let sock = io.of('/index')
 
+sock.emit('some event', { someProperty: 'some value', otherProperty: 'other value' }); 
+
+    sock.on('connection', (socket) => {
+        let usersession = socket.request.session.membres
         console.log("rere",socket.request.session.membres);
-        io.of('/index').emit('new users', {neusers:socket.request.session.membres})
+        sock.emit('new users', {neusers:usersession})
         console.log('user connect');
         console.log(" azerty",socket.request.session);
         
     
         socket.on('chat message',(msg)=>{
             console.log('message :'  + msg);
-            socket.emit('chat message' , msg)
-           
-            const mm = socket.request.session.membres.id
-            console.log("eeeeee",mm);
-            console.log("socket.request.session total",socket.request.session);
+            sock.emit('chat message' , msg,usersession)
+
+
+            const mm = socket.request.session.membres.id_user
+            console.log("socket.request.session total",socket.request.session.id);
         
 
 

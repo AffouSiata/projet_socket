@@ -11,11 +11,13 @@ const control = class{
 
     
     static affichageacceuil =(req=request,res=response)=>{
-        const ppp= req.session.membres
+    
         // console.log("dfdfdff",ppp.ID);
-        if(ppp){
+        if(req.session.membres){
+            
         
-            conn.query('SELECT * FROM messages where usersid= ?',[ppp.id_user],(error,resultat)=>{
+            conn.query('SELECT * FROM messages where usersid= ?',[req.session.membres.id_user],(error,resultat)=>{
+                
                 console.log("stockage",resultat);
                 res.render('index',{resultat:resultat})  
             })
@@ -31,7 +33,7 @@ const control = class{
 
 
 
-    static affichagepage1get =(req=request,res=response)=>{
+    static affichageconnexionget=(req=request,res=response)=>{
         if(req.session.membres){
             res.redirect('/index')  
         }
@@ -44,7 +46,7 @@ const control = class{
 ession
 
 
-    static affichagepage1post =(req=request,res=response)=>{
+    static affichageconnexionpost=(req=request,res=response)=>{
         
        quete.connexion(req.body)
        .then(success =>{

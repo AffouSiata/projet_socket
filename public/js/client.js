@@ -1,4 +1,4 @@
-var socket = io("http://192.168.88.35:3000/index",{
+var socket = io("http://192.168.88.27:3000/index",{
     withCredentials:true
   });
 
@@ -6,21 +6,31 @@ var socket = io("http://192.168.88.35:3000/index",{
   var input = document.getElementById('input');
 
   form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (input.value) {
+    e.preventDefault();
+    if (input.value) {
+    
       socket.emit('chat message', input.value);
       input.value = '';
-      }
-});
+    }
+  });
 
-
-
-socket.on('chat message', function(msg) {
-console.log("fhjkl",msg);
-  var item = document.createElement('li');
+socket.on('chat message', function(msg,usersession) {
+  console.log(msg)
+  console.log('tretretre',usersession)
+  let global =document.createElement('div') 
+  global.classList.add("mestexte")
+  let nom = document.createElement('h5')
+  var item = document.createElement('p');
   item.textContent = msg;
-  messages.appendChild(item);
-  // let mesmessages =document.
+  nom.textContent = usersession.nom
+  console.log("azerty",usersession.nom);
+  let messages = document.querySelector('.conversation')
+  messages.appendChild(global)
+  global.appendChild(nom);
+  global.appendChild(item);
+
+  let milieu =document.querySelector('.milieu')
+  milieu.scrollTop=milieu.scrollHeight
   window.scrollTo(0, document.body.scrollHeight);
 });
 
@@ -41,6 +51,11 @@ socket.on('new users',(data) =>{
     </div> 
     </li>
   `
+  
+  document.querySelector('.nom').innerHTML =`
+    <p>${data.neusers.nom}</p>
+  `
+
   // console.log("vvvvvvv",data.membres.Nom);
   // let contenu = document.createElement('div');
   // contenu.textContent = data.membres.Nom;

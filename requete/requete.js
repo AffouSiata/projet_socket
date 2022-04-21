@@ -8,6 +8,7 @@ const quete = class{
     static insertion = (data)=>{
         // console.log(req.body);
         let {nom, prenom, email, password} = data;
+        console.log("donneés",data);
         let inserer = "INSERT INTO users(nom,prenom,password,email)VALUES(?,?,?,?)";
             conn.query(inserer,[nom,prenom,password,email],(error,resultat)=>{
                if(error){
