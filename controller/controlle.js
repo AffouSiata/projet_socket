@@ -79,5 +79,11 @@ ession
 
 
     }
+    static modal=(req=request,res=response)=>{
+       
+        quete.insertion(req.body);
+
+
+   }
 }
 module.exports=control;

@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../public/style2.css">
+    <link rel="stylesheet" href="../public/modal.css">
     <script src="https://kit.fontawesome.com/6b4a8ac2d2.js" crossorigin="anonymous"></script>
     <title>Socket.IO chat</title>
   </head>
@@ -10,92 +11,126 @@
 
     
   <div class="container">
-    
+
+    <div class="espace"></div>
    
       <div class="block1">
-          <!-- <div class="recherche">
-            <form action="">
-              <input type="text">
+         
+        <div class="recherche">
+          <div>
+              <input type="text" placeholder="search">
               <i class="fas fa-search"></i>
-            </form>
-          </div> -->
-          <div class="recherche">
-            <div>
-                <input type="text" placeholder="search">
-                <i class="fas fa-search"></i>
-            </div>
+          </div>
             
         </div>
 
-          <ul class="contentutilisateur">
-            
-          </ul>
+        <ul class="contentutilisateur"></ul>
          
       </div>
       
       
       <div class="block2">
         <div class="haut">
-            <div class="nom">
+          <div class="nom">
                
-            </div>
-            <div class="image">
-            <button><img src="../public/images/1.png" alt=""></button>
-            </div>
+          </div>
+          <div class="image" onclick="taper()">
+            <button class="cliquer" ><img src="../public/images/1.png" alt=""></button>
+          </div>
         </div>
 
 
         <div class="milieu">
+
+          <div class="monmodal">
+            <div class="modal">
+              <div class="modalité">
+                <h2>Modifier le profil:</h2>
+                <button onclick="fermer()"><i class="fas fa-times"></i></button>
+              </div>
+              <hr>
+              
+              <form >
+                <div class="modal1">
+                  <!-- <label for="nom">Nom</label><br> -->
+                  <input type="text"  name ="nom" id="nom" placeholder="Entrez Votre nom">
+                </div>
+                <br>
+                <div class="modal2">
+                  <label class="custom-file-upload">
+                    <input type="file" id="telecharge"/>
+                    <i class="fa fa-cloud-upload"></i> veuillez telecharger une image
+                </label>
+                </div><br>
+                <button type="submit">Envoyer</button>
+              </form>
+              </div> 
+          </div>
+
+
+
+
           <div class="conversation">
             <% if (resultat) { %>
               <% for (let i = 0; i < resultat.length; i++) {
                 const element = resultat[i]; %>
-           <div class="mestexte">
-          
-              
-      
-              <p> <%= element.texte %></p>
-          
-           </div>
-           <% }%>
-           <% } %> 
-
-            
+            <div class="mestexte">
+                <p> <%= element.texte %></p>
+            </div>
+            <% }%>
+            <% } %> 
           </div>
-          
-      </div>
-         
-          
-         
-
-          <!-- <div class="conversation">
-            <h5>Affou</h5>
-            <p>salut ma grand</p>
-          </div>
-          <div class="conversation outgoing">
-            <h5>Pen</h5>
-            <p>salut ma puce</p>
-          </div> -->
-          
-
         </div>
+        
+        <div class="bas">
+          <form id="form" action="" method="post">
+            <input id="input"  name="texte" autocomplete="off" placeholder="Entrer votre message" /><button>Send</button>
+          </form> 
+        </div>  
 
-
-
-
-
-
-          <div class="bas">
-            <form id="form" action="" method="post">
-              <input id="input"  name="texte" autocomplete="off" placeholder="Entrer votre message" /><button>Send</button>
-            </form> 
-          </div>
       </div>
-  </div> 
+          
+  </div>
+   
 
 
 
-  
+  <script>
+    function fermer (){
+
+      let pageferme = document.querySelector('.modal')
+      let icon = document.querySelector('.espace')
+      pageferme.style.display="none";
+      icon.style.display="none"
+    }
+
+
+
+
+    function taper (){
+   
+      let affiche= document.querySelector('.modal')
+      let espace = document.querySelector('.espace')
+      
+      affiche.style.display =  "block"
+      espace.style.display="block"
+   
+    }
+
+
+
+      let lenom =document.querySelector('#nom')
+      let monimage =document.querySelector('#telecharge')
+      let formulaire =document.querySelector('form')
+      formulaire.addEventListener('submit',(e)=>{
+        console.log("azerty",e.target);
+        e.preventDefault();
+
+      })
+    
+    
+
+  </script>
     
 
     <script src="/socket.io/socket.io.js"></script>
@@ -125,87 +160,4 @@
 
 
 
- <!-- <ul id="messages">
-
-      
-      <% if (resultat) { %>
-        <% for (let i = 0; i < resultat.length; i++) {
-          const element = resultat[i]; %>
-  
-          <li> <%= element.texte %></li>
-         <% }%>
-      <% } %>  
-     
-    </ul>
-    <form id="form" action="" method="post">
-      <input id="input"  name="texte" autocomplete="off" /><button>Send</button>
-    </form> -->
-
-
-
-     <!--
-          <div class="utilisateur">
-            <div class="userimage">
-              <img src="../public/images/1.png" alt="">
-            </div>
-            <div class="usernom">
-               <p>User1</p>
-            </div>
-          </div> 
-           <div class="utilisateur">
-            <div class="userimage">
-              <img src="../public/images/1.png" alt="">
-            </div>
-            <div class="usernom">
-               <p>User1</p>
-            </div>
-          </div>
-          <div class="utilisateur">
-            <div class="userimage">
-              <img src="../public/images/1.png" alt="">
-            </div>
-            <div class="usernom">
-               <p>User1</p>
-            </div>
-          </div>
-          <div class="utilisateur">
-            <div class="userimage">
-              <img src="../public/images/1.png" alt="">
-            </div>
-            <div class="usernom">
-               <p>User1</p>
-            </div>
-          </div>
-          <div class="utilisateur">
-            <div class="userimage">
-              <img src="../public/images/1.png" alt="">
-            </div>
-            <div class="usernom">
-               <p>User1</p>
-            </div>
-          </div>
-    -->
-
-
-
-    <!-- <div class="conversation outgoing">
-            <h5>Pen</h5>
-            <p>salut ma puce</p>
-          </div>
-        
-          <div class="conversation">
-            <h5>Affou</h5>
-            <p>salut ma grand</p>
-          </div>
-          <div class="conversation outgoing">
-            <h5>Pen</h5>
-            <p>salut ma puce</p>
-          </div> -->
-
-
-
-
-
-
-
-         
+ 

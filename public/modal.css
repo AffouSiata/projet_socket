@@ -6,7 +6,72 @@
 body{
     background-color: #bbb;
 }
-.container{
+.monmodal{
     width: 100%;
 }
+.modal{
+    display: none;
+    /* border: 1px solid black; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 400px;
+    padding: 20px;
+    background-color: #7e6dd1;
+   height: 240px;
+   border-radius:10px ;
+   z-index: 10;
+}
+.modalité{
+    display: flex;
+    justify-content: space-between;
+}
+.modalité h2{
+    color: white;
+}
+.modalité button{
+    border: none;
+}
+.modalité i{
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    color: rgb(100, 93, 93)
+}
+hr{
+  margin: 8px;
+}
+.modal1 input{
+    width: 360px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(226, 229, 232);
+    font-size: 20px;
+}
+.modal2 input{
+   font-size: 21px;
+}
+.modal2 input[type="file"] {
+    display: none;
+    
+}
+.modal2 .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 12px;
+    cursor: pointer;
+    width: 360px;
+    font-size: 20px;
+    color: white;
 
+}
+form button{
+    margin-left: 270px;
+    padding: 7px;
+    width: 90px;
+    font-size: 20px;
+    border: none;
+    background-color: #34debb;
+    border-radius: 7px;
+}

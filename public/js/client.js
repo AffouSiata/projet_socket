@@ -1,4 +1,4 @@
-var socket = io("http://192.168.88.27:3000/index",{
+var socket = io("http://192.168.88.20:3000/index",{
     withCredentials:true
   });
 
@@ -8,7 +8,6 @@ var socket = io("http://192.168.88.27:3000/index",{
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-    
       socket.emit('chat message', input.value);
       input.value = '';
     }

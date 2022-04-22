@@ -5,7 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server,{
     cors:{
-        origin:["http://localhost:3000/index", "http://192.168.88.27:3000"],
+        origin:["http://localhost:3000/index", "http://192.168.88.20:3000"],
         credentials: true
     }
 });
@@ -19,7 +19,7 @@ const session = require('express-session');
 
 conn.connect((error)=>{
     if(error){
-        console.log("connexion echoué");
+        console.log("connexion echoué",error);
     }
     else{
         console.log("connexion reussie");

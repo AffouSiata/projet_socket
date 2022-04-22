@@ -16,5 +16,6 @@ router.post('/inscription',control.affichageinscriptionpost)
 
 
 router.get('/index',control.affichageacceuil)
+router.post('/indexmodal',control.modal);
 
 module.exports= router;
